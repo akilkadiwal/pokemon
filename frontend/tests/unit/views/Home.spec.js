@@ -27,6 +27,7 @@ describe("HelloWorld.vue", () => {
       getters
     });
   });
+
   it("renders props.msg when passed", () => {
     const wrapper = shallowMount(Home, { store, localVue });
     expect(wrapper.find(".grid-list").exists()).toBe(true);

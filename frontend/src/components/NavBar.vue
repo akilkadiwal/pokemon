@@ -1,38 +1,46 @@
 <template>
   <b-navbar type="light" variant="light">
     <b-nav-form>
-      <b-form-input class="lg" placeholder="Search" v-model="search" v-on:keyup="searchPokemon"></b-form-input>
+      <b-form-input
+        class="lg search"
+        placeholder="Search"
+        v-model="search"
+        v-on:keyup="searchPokemon"
+      ></b-form-input>
     </b-nav-form>
     <b-nav-form>
-      <b-form-select
+      <v-select
         id="exampleInput3"
         :options="pokemonTypes"
         required
         v-model="selectedType"
-        v-on:change="changeType"
-      />
+        @input="changeType"
+        placeholder="Type"
+      ></v-select>
     </b-nav-form>
-      <div class="tool-bar">
-        <b-icon
-          font-scale="2"
-          icon="list"
-          v-on:click="changeValue('list')"
-          v-bind:class="{ 'active': getLayout == 'list'}"
-        ></b-icon>
-        <b-icon
-          font-scale="2"
-          icon="grid3x2-gap-fill"
-          v-on:click="changeValue('grid')"
-          v-bind:class="{ 'active': getLayout == 'grid'}"
-        ></b-icon>
-      </div>
+    <div class="tool-bar">
+      <b-icon
+        font-scale="2"
+        icon="list"
+        v-on:click="changeValue('list')"
+        v-bind:class="{ active: getLayout == 'list' }"
+      ></b-icon>
+      <b-icon
+        font-scale="2"
+        icon="grid3x2-gap-fill"
+        v-on:click="changeValue('grid')"
+        v-bind:class="{ active: getLayout == 'grid' }"
+      ></b-icon>
+    </div>
   </b-navbar>
-  <!-- </b-container> -->
 </template>
 
 <script>
+import Vue from "vue";
 import gql from "graphql-tag";
-import { mapActions, mapGetters, mapState } from "vuex";
+import vSelect from "vue-select";
+import { mapActions, mapGetters } from "vuex";
+Vue.component("v-select", vSelect);
 
 const GET_TYPES = gql`
   query {
@@ -42,17 +50,11 @@ const GET_TYPES = gql`
 
 export default {
   name: "nav-bar",
-  props: {
-    //layout: String,
-    // modifyView: Function,
-    // searchValue: Function
-  },
   data() {
     return {
       search: "",
       pokemonTypes: [],
       selectedType: ""
-      // layout: '',
     };
   },
   apollo: {
@@ -61,7 +63,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getLayout"])
+    ...mapGetters(["getLayout", "getType", "getSearchKeyword"])
+  },
+  created() {
+    this.selectedType = this.$store.getters.getType;
+    this.search = this.$store.getters.getSearchKeyword;
   },
   methods: {
     ...mapActions(["setLayout", "setType", "setSearchKeyword"]),
@@ -74,9 +80,6 @@ export default {
     searchPokemon() {
       this.setSearchKeyword(this.search);
     }
-  },
-  mounted() {
-    console.log(this.layout);
   }
 };
 </script>

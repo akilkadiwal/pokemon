@@ -3,13 +3,13 @@
     <section class="grid-list" v-cloak>
       <b-card no-body>
         <b-tabs pills align="center">
-          <b-tab title="ALL" active>
+          <b-tab title="All" active lazy>
             <b-card-text>
               <NavBar />
-              <All  />
+              <All />
             </b-card-text>
           </b-tab>
-          <b-tab title="Favorites">
+          <b-tab title="Favorites" lazy>
             <b-card-text>
               <NavBar />
               <Favorite />
@@ -33,10 +33,6 @@ export default {
     All,
     NavBar,
     Favorite
-  },
-  data() {
-    return {
-    };
-  },
+  }
 };
 </script>
