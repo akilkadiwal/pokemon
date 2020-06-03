@@ -66,18 +66,22 @@ export default {
     ...mapGetters(["getLayout", "getType", "getSearchKeyword"])
   },
   created() {
+    // Based on current state set search and type dropdown
     this.selectedType = this.$store.getters.getType;
     this.search = this.$store.getters.getSearchKeyword;
   },
   methods: {
     ...mapActions(["setLayout", "setType", "setSearchKeyword"]),
     changeValue(value) {
+      // Change page layout
       this.setLayout(value);
     },
     changeType() {
+      // Set selected dropdown value
       this.setType(this.selectedType);
     },
     searchPokemon() {
+      // Set searched value
       this.setSearchKeyword(this.search);
     }
   }

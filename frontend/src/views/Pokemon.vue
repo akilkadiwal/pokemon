@@ -27,15 +27,18 @@
           <div class="pokemon-name">
             <h4>{{ pokemon.name }}</h4>
             <small>{{ pokemon.types ? pokemon.types.join(",") : "" }}</small>
-            <span style="float:right, margin-top: -10px">
-              <b-icon
-                icon="heart-fill"
-                v-if="pokemon.isFavorite == true"
-              ></b-icon>
-              <b-icon
-                icon="heart-fill"
-                v-if="pokemon.isFavorite == false"
-              ></b-icon>
+            <span>
+              <transition
+                name="bounce"
+                mode="in-out"
+                :duration="{ enter: 500, leave: 800 }"
+              >
+                <b-icon
+                  icon="heart"
+                  v-if="pokemon.isFavorite == false"
+                ></b-icon>
+                <b-icon icon="heart-fill" v-else></b-icon>
+              </transition>
             </span>
             <div class="health-combat-bar">
               <b-progress
@@ -143,6 +146,7 @@ export default {
     };
   },
   methods: {
+    // Play sound of pokemon
     playSound(sound) {
       if (sound) {
         var audio = new Audio(sound);
@@ -151,6 +155,7 @@ export default {
     }
   },
   computed: {
+    // Check to fetch pokemon video href link
     videoSource: function() {
       if (this.pokemon.name === "Nidoran-F")
         return "https://db.pokemongohub.net/videos/Nidoran_Female-small.mp4";

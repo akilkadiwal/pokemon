@@ -1,16 +1,7 @@
-@import 'variables';
-$s-min: 20;
-$s-max: 70;
-$l-min: 30;
-$l-max: 90;
-
-[v-cloak] {
-		/* Hide un-compiled mustache bindings until the Vue instance is ready */
-		display: none;
-}
+@import "variables";
 
 * {
-		box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 a,
@@ -34,7 +25,7 @@ a:hover {
 	max-width: 1024px;
 	min-width: 300px;
 	padding: 30px;
-	text-align:center;
+	text-align: center;
 }
 
 /* The tool bar */
@@ -47,19 +38,20 @@ a:hover {
 	width: 85px;
 }
 
-.m-md-2, .m-2{
-		margin: 0 !important;;
+.m-md-2,
+.m-2 {
+	margin: 0 !important;
 }
 
 ul li.nav-item {
 	border: 1px solid $color3;
- width:48.5%;
+	width: 48.5%;
 }
 
 .nav.nav-pills {
 	margin: 5px;
 
-	.nav-link{
+	.nav-link {
 		border-radius: 0;
 
 		&.active {
@@ -68,44 +60,44 @@ ul li.nav-item {
 	}
 }
 
-.navbar{
-	.v-select{
-		width:100%
+.navbar {
+	.v-select {
+		width: 100%;
 	}
 
-	.vs__search{
+	.vs__search {
 		color: $color4;
-		}
+	}
 }
 
-.all-pokemon-view{
+.all-pokemon-view {
 	.row-no-gutters {
-	  margin-right: 2px;
-	  margin-left: 2px;
+		margin-right: 2px;
+		margin-left: 2px;
 	}
 
 	.row-no-gutters > [class*="col-"] {
-	  padding-right: 2px;
-	  padding-left: 2px;
+		padding-right: 2px;
+		padding-left: 2px;
 	}
 
-	.card img{
+	.card img {
 		height: 15rem;
 		padding: 20px 15px;
 	}
 
-	.card .card-img-left{
-			width: 80px;
-	    height: 80px;
-			padding: 3px;
+	.card .card-img-left {
+		width: 80px;
+		height: 80px;
+		padding: 3px;
 	}
 
-	.card-text p{
+	.card-text p {
 		margin-bottom: 0px;
 	}
 
 	.card-body {
-		padding:1rem;
+		padding: 1rem;
 		background-color: $backgroundColor;
 
 		.card-title {
@@ -114,44 +106,48 @@ ul li.nav-item {
 			margin-bottom: 0;
 		}
 
-		span{
-			float:right;
-			 margin-top: -10px;
+		span {
+			float: right;
+			margin-top: -10px;
 
-			 svg.bi-heart, svg.bi-heart-fill{
-				 fill: $redColor;
-				 cursor: pointer;
-			 }
+			svg.bi-heart,
+			svg.bi-heart-fill {
+				fill: $redColor;
+				cursor: pointer;
+			}
 
-			 svg.bi-info-circle{
+			svg.bi-info-circle {
 				fill: $color1;
 				margin-right: 10px;
 				cursor: pointer;
 				outline: none;
-			 }
+			}
 
-			 &.badge.badge-info{
-				 margin-top: 5px;
-				 margin-right: 5px;
-
-			 }
-		}
-
-	/*iterate to select random background color for pokemon types */
-		@for $i from 1 through 500 {
-			span.badge.badge-info.tag-#{$i}  {
-				background-color: hsl(random(360),$s-min+random($s-max+-$s-min),$l-min+random($l-max+-$l-min));
+			&.badge.badge-info {
+				margin-top: 5px;
+				margin-right: 5px;
 			}
 		}
 
-		small{
-			float:left;
-			clear:left;
+		/*iterate to select random background color for pokemon types */
+		@for $i from 1 through 500 {
+			span.badge.badge-info.tag-#{$i} {
+				background-color: hsl(
+					random(360),
+					$s-min + random($s-max + -$s-min),
+					$l-min + random($l-max + -$l-min)
+				);
+			}
+		}
+
+		small {
+			float: left;
+			clear: left;
 		}
 	}
 
-	h4{
-		float:left;
+	h4 {
+		float: left;
 		font-size: 1.2rem;
 		margin-bottom: 0px;
 		color: black;
@@ -159,73 +155,149 @@ ul li.nav-item {
 }
 
 //nav-bar css
-.navbar{
-
-	li.form-inline:first-of-type{
-		width:65%;
+.navbar {
+	li.form-inline:first-of-type {
+		width: 65%;
 	}
 
-	li.form-inline:nth-of-type(2){
-		width:35%;
+	li.form-inline:nth-of-type(2) {
+		width: 35%;
 	}
 
-	form{
-		width:100%;
+	form {
+		width: 100%;
 		margin-right: 5px;
-
-		.form-control , select.custom-select{
+		.form-control,
+		select.custom-select {
 			width: 100%;
 		}
 	}
 
-	.tool-bar{
-		svg{
-			fill:rgba(0, 173, 167, 0.6);
-
-			&.active{
+	.tool-bar {
+		svg {
+			fill: rgba(0, 173, 167, 0.6);
+			&.active {
 				fill: $color1;
 			}
 		}
 	}
-
 }
 
 /* transition*/
-.card{
-	-webkit-animation:appear 1s ease 0s 1 normal;
-	-moz-animation:appear 1s ease 0s 1 normal;
-	-ms-animation:appear 1s ease 0s 1 normal;
-	animation:appear 1s ease 0s 1 normal;
+.card {
+	-webkit-animation: appear 1s ease 0s 1 normal;
+	-moz-animation: appear 1s ease 0s 1 normal;
+	-ms-animation: appear 1s ease 0s 1 normal;
+	animation: appear 1s ease 0s 1 normal;
+}
+
+@-webkit-keyframes appear {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
 	}
-
-	@-webkit-keyframes appear {
-	0%{ opacity: 0; -webkit-transform: scale3d(0.3, 0.3, 0.3); transform: scale3d(0.3, 0.3, 0.3); }
-	60%{ opacity: 1; -webkit-transform: scale3d(1,1,1); transform: scale3d(1,1,1); }
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
 	}
-	@keyframes appear {
-	0%{ opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
-	60%{ opacity: 1; transform: scale3d(1,1,1); }
+}
+@keyframes appear {
+	0% {
+		opacity: 0;
+		transform: scale3d(0.3, 0.3, 0.3);
 	}
+	60% {
+		opacity: 1;
+		transform: scale3d(1, 1, 1);
+	}
+}
 
-	.modal-dialog{
-		-webkit-animation:elastic 2s ease 0s 1 normal;
-		-moz-animation:elastic 2s ease 0s 1 normal;
-		-ms-animation:elastic 2s ease 0s 1 normal;
-		animation:elastic 2s ease 0s 1 normal;
-		}
+.modal-dialog {
+	-webkit-animation: elastic 2s ease 0s 1 normal;
+	-moz-animation: elastic 2s ease 0s 1 normal;
+	-ms-animation: elastic 2s ease 0s 1 normal;
+	animation: elastic 2s ease 0s 1 normal;
+}
 
-		@-webkit-keyframes elastic {
-		0%{ -webkit-transform: scale(1); transform: scale(1); }
-		30%{ -webkit-transform: scaleX(1.25) scaleY(0.75); transform: scaleX(1.25) scaleY(0.75); }
-		40%{ -webkit-transform: scaleX(0.75) scaleY(1.25); transform: scaleX(0.75) scaleY(1.25); }
-		60%{ -webkit-transform: scaleX(1.15) scaleY(0.85); transform: scaleX(1.15) scaleY(0.85); }
-		100%{ -webkit-transform: scale(1); transform: scale(1); }
-		}
+@-webkit-keyframes elastic {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	30% {
+		-webkit-transform: scaleX(1.25) scaleY(0.75);
+		transform: scaleX(1.25) scaleY(0.75);
+	}
+	40% {
+		-webkit-transform: scaleX(0.75) scaleY(1.25);
+		transform: scaleX(0.75) scaleY(1.25);
+	}
+	60% {
+		-webkit-transform: scaleX(1.15) scaleY(0.85);
+		transform: scaleX(1.15) scaleY(0.85);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
 
-		@keyframes elastic {
-		0%{ -ms-transform: scale(1); transform: scale(1); }
-		30%{ -ms-transform: scaleX(1.25) scaleY(0.75); transform: scaleX(1.25) scaleY(0.75); }
-		40%{ -ms-transform: scaleX(0.75) scaleY(1.25); transform: scaleX(0.75) scaleY(1.25); }
-		60%{ -ms-transform: scaleX(1.15) scaleY(0.85); transform: scaleX(1.15) scaleY(0.85); }
-		100%{ -ms-transform: scale(1); transform: scale(1); }
-		}
+@keyframes elastic {
+	0% {
+		-ms-transform: scale(1);
+		transform: scale(1);
+	}
+	30% {
+		-ms-transform: scaleX(1.25) scaleY(0.75);
+		transform: scaleX(1.25) scaleY(0.75);
+	}
+	40% {
+		-ms-transform: scaleX(0.75) scaleY(1.25);
+		transform: scaleX(0.75) scaleY(1.25);
+	}
+	60% {
+		-ms-transform: scaleX(1.15) scaleY(0.85);
+		transform: scaleX(1.15) scaleY(0.85);
+	}
+	100% {
+		-ms-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+svg.bi-heart:active,
+svg.bi-heart-fill {
+	-webkit-animation: flip 2s ease 0s 1 normal;
+	-moz-animation: flip 2s ease 0s 1 normal;
+	-ms-animation: flip 2s ease 0s 1 normal;
+	animation: flip 2s ease 0s 1 normal;
+}
+
+@-webkit-keyframes flip {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: rotateY(0deg);
+	}
+	50% {
+		-webkit-transform: translateY(180);
+		transform: rotateY(180deg);
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: rotateY(0deg);
+	}
+}
+
+@keyframes flip {
+	0% {
+		transform: rotateY(0deg);
+	}
+	50% {
+		transform: rotateY(180deg);
+	}
+	100% {
+		transform: rotateY(0deg);
+	}
+}

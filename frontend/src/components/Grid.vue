@@ -27,7 +27,7 @@
                   >{{ type }}</b-badge
                 >
               </small>
-              <span style="float:right, margin-top: -10px">
+              <span>
                 <b-icon
                   icon="info-circle"
                   class

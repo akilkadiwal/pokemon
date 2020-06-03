@@ -50,6 +50,7 @@ export default {
   methods: {
     ...mapActions(["setPokemons", "setFavoritePokemons"]),
     setFavorite(pokemon) {
+      // Add pokemon to favorite
       this.$apollo
         .mutate({
           mutation: SET_FAVORITE_POKEMON,
@@ -78,12 +79,14 @@ export default {
             {
               title: "Error: ",
               variant: "danger",
+              toaster: "b-toaster-top-right",
               solid: true
             }
           );
         });
     },
     unSetFavorite(pokemon) {
+      // Remove pokemon from favorite
       this.$apollo
         .mutate({
           mutation: UNSET_FAVORITE_POKEMON,
@@ -107,9 +110,20 @@ export default {
         })
         .catch(error => {
           this.error = error;
+          this.$bvToast.toast(
+            `Failed to remove ${pokemon.name} from favorite`,
+            {
+              title: `Failed to remove from favorite`,
+              toaster: "b-toaster-top-right",
+              variant: "danger",
+              solid: true,
+              appendToast: false
+            }
+          );
         });
     },
     fetchPokemons(search, type, offset) {
+      // Fetch pokemons from graphql
       this.pokemons = this.$apollo
         .query({
           query: GET_POKEMON_BY_QUERY,
@@ -137,6 +151,7 @@ export default {
         });
     },
     scroll() {
+      // On page scroll fetching additional pokemons
       window.onscroll = () => {
         if (
           window.innerHeight + window.scrollY >=
@@ -154,10 +169,12 @@ export default {
   },
   watch: {
     getSearchKeyword: function(newVal) {
+      // Listen to search string and fetch pokemons
       this.offset = 0;
       this.fetchPokemons(newVal, this.$store.getters.getType, this.offset);
     },
     getType: function(newVal) {
+      // Listen to type selection and fetch pokemons
       this.offset = 0;
       this.fetchPokemons(
         this.$store.getters.getSearchKeyword,

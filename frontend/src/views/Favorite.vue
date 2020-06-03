@@ -42,6 +42,7 @@ export default {
   methods: {
     ...mapActions(["setPokemons", "setFavoritePokemons"]),
     unSetFavorite(pokemon) {
+      // Remove pokemon from favorite
       this.$apollo
         .mutate({
           mutation: UNSET_FAVORITE_POKEMON,
@@ -72,10 +73,20 @@ export default {
         })
         .catch(error => {
           this.error = error;
-          alert("E " + error);
+          this.$bvToast.toast(
+            `Failed to remove ${pokemon.name} from favorite`,
+            {
+              title: `Failed to remove from favorite`,
+              toaster: "b-toaster-top-right",
+              variant: "danger",
+              solid: true,
+              appendToast: false
+            }
+          );
         });
     },
     fetchPokemons(search = null, type = null) {
+      // Get  favorite pokemons from graphql
       this.pokemons = this.$apollo
         .query({
           query: GET_FAVORITE_POKEMONS_BY_QUERY,
@@ -96,9 +107,11 @@ export default {
   },
   watch: {
     getSearchKeyword: function(newVal) {
+      // Listen to search string and fetch pokemons
       this.fetchPokemons(newVal, this.$store.getters.getType);
     },
     getType: function(newVal) {
+      // Listen to type selection and fetch pokemons
       this.fetchPokemons(this.$store.getters.getSearchKeyword, newVal);
     }
   },
